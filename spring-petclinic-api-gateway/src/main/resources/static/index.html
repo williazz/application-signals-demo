@@ -18,10 +18,24 @@
                 sessionSampleRate: 1,
                 identityPoolId: "us-west-1:118ca752-f81f-4f27-9d95-59974b766075",
                 endpoint: "https://dataplane.rum.us-west-1.amazonaws.com",
-                telemetries: ["performance","errors","http"],
+                telemetries: [
+                    "performance",
+                    "errors",
+                    [
+                        "http",
+                        {
+                            recordAllRequests: true,
+                            addXRayTraceIdHeader: true
+                        }
+                    ]
+                ],
                 allowCookies: true,
-                enableXRay: false
-              }
+                disableAutoPageView: true,
+                cookieAttributes: {
+                    secure: false
+                },
+                enableXRay: true
+                }
             );
           </script>
 
